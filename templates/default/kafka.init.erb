@@ -3,8 +3,8 @@ description "Kafka Broker"
 # This file is managed by Chef
 # Changes will be overwritten
 
-start on runlevel [2345]
-stop on starting rc RUNLEVEL=[016]
+start on started zookeeper
+stop on stopping zookeeper
 
 respawn
 respawn limit 2 5
