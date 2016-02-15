@@ -25,7 +25,6 @@ end
       :config_dir => node["apache_kafka"]["config_dir"],
       :bin_dir => node["apache_kafka"]["bin_dir"]
     )
-    notifies :restart, "service[kafka]", :delayed
   end
 end
 
@@ -47,7 +46,6 @@ template ::File.join(node["apache_kafka"]["config_dir"],
     :zookeeper_connect => zookeeper_connect,
     :entries => node["apache_kafka"]["conf"]["server"]["entries"]
   )
-  notifies :restart, "service[kafka]", :delayed
 end
 
 template ::File.join(node["apache_kafka"]["config_dir"],
@@ -60,5 +58,4 @@ template ::File.join(node["apache_kafka"]["config_dir"],
     :log_dir => node["apache_kafka"]["log_dir"],
     :entries => node["apache_kafka"]["conf"]["log4j"]["entries"]
   )
-  notifies :restart, "service[kafka]", :delayed
 end
